@@ -1,0 +1,31 @@
+<div class="col-md-12" *ngIf="photos.length > 0">
+    <div class="row">
+        <div class="col-md-2" *ngFor="let item of photos">
+            <div class="thumbnail">
+                <img src="{{item.url_q}}" alt="{{item.title}}">
+                <div class="caption">
+                    <h3>{{item.title}}</h3>
+                    <p><label>Owner:</label> {{item.ownername}}</p>
+                    <p><label>Views:</label> {{item.views}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav>
+    <ul class="pager">
+        <li class="disabled" *ngIf="currentPage<=1">
+            <a>Previous</a>
+        </li>
+        <li *ngIf="currentPage>1">
+            <a [routerLink]="getTagDetailsLink(previousPage)">Previous</a>
+        </li>
+        <li class="disabled" *ngIf="currentPage>=totalPages">
+            <a>Next</a>
+        </li>
+        <li *ngIf="currentPage<totalPages">
+            <a [routerLink]="getTagDetailsLink(nextPage)">Next</a>
+        </li>
+    </ul>
+</nav>
